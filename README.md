@@ -1,2 +1,3 @@
 # JavaScript30
-Vanilla JS build challenge
+[Javascript30](https://javascript30.com/)Build 30 things in 30 days.
+[Check out my Codepen](https://codepen.io/trobes/)
