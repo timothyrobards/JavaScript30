@@ -1,0 +1,82 @@
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+}
+
+html {
+  background :url(https://source.unsplash.com/78PQJ5nK1Gc/1500x1500) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  overflow: hidden;
+}
+
+.c-search-form {
+  position: relative;
+  max-width: 430px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 100px auto;
+}
+
+.c-search-form__input,
+.c-search-form__suggestions {
+  width: 100%;
+  border: 2px solid yellow !important;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 3px 7px -4px rgba(0,0,0,0.2);
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  color: #555;
+}
+
+.c-search-form__input {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-left: 2.5em;
+  padding-right: 1em;
+  border: none;
+}
+
+.c-search-form__search-icon {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 31px;
+  top: 0;
+  width: 1em;
+  height: 50px;
+  color: #3f51b5;
+}
+
+.c-search-form__suggestions {
+  padding: 0.5em 0;
+  list-style: none;
+}
+
+.c-search-form__suggestion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  padding-left: 1em;
+  padding-right: 1em;
+  border-bottom: 1px solid #f0f0f7;
+  margin: 0;
+}
+
+.c-search-form__suggestion:last-child {
+  border-bottom: none;
+}
+
+.c-search-form__suggestion-highlighted-term {
+  display: inline-block;
+  background: #fff176;
+}
+
+.c-search-form__population-suggestion {
+  font-size: 14px;
+}

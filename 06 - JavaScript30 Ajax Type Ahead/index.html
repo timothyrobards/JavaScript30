@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form class="c-search-form">
+  <span class="c-search-form__search-icon fa fa-search"></span>
+  <input class="c-search-form__input" type="text" placeholder="e.g. Santa Monica">
+  <ul class="c-search-form__suggestions">
+    <li class="c-search-form__suggestion">Enter a city or state</li>
+    
+  </ul>
+</form>
+
+<script>
+class TypeAhead {
+  constructor() {
+    this.searchInput = document.querySelector('.c-search-form__input');
+    this.endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+    this.cities = [];
+    this.fetchCitiesPromiseHandler = this.fetchCitiesPromiseHandler.bind(this);
+    this.displayMatches = this.displayMatches.bind(this);
+    fetch(this.endpoint)
+      .then(blob => blob.json())
+    .then(this.fetchCitiesPromiseHandler)
+  }
+  
+  fetchCitiesPromiseHandler(data) {
+    this.cities.push(...data);
+    this.addSearchInputKeyupEventListener();
+  }
+  
+  findMatches(wordToMatch, cities) {
+    const regex = new RegExp(wordToMatch, 'gi');
+    return cities.filter(place => place.city.match(regex) || place.state.match(regex));
+  }
+  
+  displayMatches() {
+    const searchTerm = this.searchInput.value;
+    const searchSuggestions = document.querySelector('.c-search-form__suggestions');
+    if (searchTerm.trim() === '') {
+      return searchSuggestions.innerHTML = '<li class="c-search-form__suggestion">Enter a city or state</li>';
+    }
+    
+    const matchedPlaces = this.findMatches(searchTerm, this.cities);
+    if (matchedPlaces.length === 0) {
+      return searchSuggestions.innerHTML = '<li class="c-search-form__suggestion">No city or state found.</li>';
+    }
+    
+    const matchedPlacesHtml = matchedPlaces.map(place => `<li class="c-search-form__suggestion"><span class="c-search-form__place-suggestion">${this.highlightPlace(`${place.city}, ${place.state}`, searchTerm)}</span><span class="c-search-form__population-suggestion">${this.numberWithCommas(place.population)}</li>`).join('');
+    searchSuggestions.innerHTML = matchedPlacesHtml; 
+  }
+  
+  addSearchInputKeyupEventListener() {
+    this.searchInput.addEventListener('keyup', this.displayMatches);
+  }
+  
+  highlightPlace(place, searchTerm) {
+    const regex = new RegExp(searchTerm, 'gi');
+    return place.replace(regex, '<span class="c-search-form__suggestion-highlighted-term">$&</span>');
+  }
+  
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+}
+
+const typeAhead = new TypeAhead();
+</script>
+  </body>
+</html>
