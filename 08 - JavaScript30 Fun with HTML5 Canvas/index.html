@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+</head>
+<body>
+<h1>draw here!</h1>
+<canvas id="draw" width="800" height="800"></canvas>
+<div class="erase">
+  <p>ERASE</p>
+</div>
+<script>
+const canvas = document.querySelector('#draw');
+    const erase = document.querySelector('.erase');
+    const ctx = canvas.getContext('2d');
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.strokeStyle = '#f07';
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.globalCompositeOperation = 'overlay';
+
+    let isDrawing = false;
+    let lastX = 0;
+    let lastY = 0;
+    let hue = 0;
+    let direction = true;
+
+    draw = e => {
+      if (!isDrawing) return;
+
+      ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+
+      hue++;
+      if (hue > 360) hue = 0;
+
+      if (ctx.lineWidth >= 50 || ctx.lineWidth <= 1) {
+        direction = !direction;
+      }
+      if (direction) {
+        ctx.lineWidth++;
+      } else {
+        ctx.lineWidth--;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(e.offsetX, e.offsetY);
+      ctx.stroke();
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+    }
+    canvas.addEventListener('mousedown', e => {
+      [lastX, lastY] = [e.offsetX, e.offsetY];
+      isDrawing = true;
+    });
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', () => isDrawing = false);
+    canvas.addEventListener('mouseout', () => isDrawing = false);
+erase.addEventListener('click',cleanDraw);
+
+function cleanDraw(){
+  ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+}
+
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+body {
+  background :url(https://source.unsplash.com/CPWZw9mg8QA/1500x1500) no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 10vw;
+  font-family: 'Indie Flower', cursive;
+  pointer-events: none;
+  z-index: -1;
+}
+.erase {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 3vw;
+  font-family: 'Indie Flower', cursive;
+  font-weight: 800;
+  color: #000;
+  cursor: pointer;
+}
+.erase:hover p {
+  border-bottom: 3px solid black;
+}
+.erase p {
+  font-size: 25px;
+}
+</style>
+
+</body>
+</html>
