@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Key Detection</title>
+  <script type="text/javascript" src="http://www.cornify.com/js/cornify.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+</head>
+<body>
+
+<div class="wrapper">
+  <p class="title">
+     Type the following sequence:</p>
+  <div class="keys">
+    <div class="item">p</div>
+    <div class="item">5</div>
+    <div class="item">w</div>
+    <div class="item">3</div>
+    <div class="item">r</div>
+    <div class="item">d</div>
+  </div>
+</div>
+
+<style>
+body {
+  padding: 3rem 1rem 0;
+  font-size: 16px;
+  color: #000;
+  background: #E44D26;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F16529, #E44D26);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F16529, #E44D26); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  overflow: hidden;
+}
+p {
+  margin-top: 0;
+  font-weight: normal;
+  font-family: 'Anton', sans-serif;
+}
+.wrapper {
+  padding: 1rem 0;
+  text-align: center;
+}
+.title {
+  margin-bottom: 2rem;
+  font-size: 1.25em;
+}
+.keys {
+  display: flex;
+  justify-content: center;
+}
+.item {
+  width: 3rem;
+  height: 3rem;
+  line-height: 3rem;
+  margin: 0 1rem 1rem;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  font-weight: 300;
+  color: #FFF;
+  background: #000;
+  box-shadow: 0 12px 10px -8px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s cubic-bezier(0.57, 0.66, 1, 1.63);
+}
+</style>
+
+<script>
+//includes cornify.js
+
+const pressed = [];
+const secretCode = 'p5w3rd';
+window.addEventListener('keyup', (e) => {
+  console.log(e.key);
+  pressed.push(e.key);
+  pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length);
+  if (pressed.join('').includes(secretCode)) {
+    cornify_add();
+  }
+  console.log(pressed);
+});
+</script>
+</body>
+</html>
