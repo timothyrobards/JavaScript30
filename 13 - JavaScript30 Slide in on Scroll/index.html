@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great" rel="stylesheet">
+
+</head>
+<body>
+
+  <div class="site-wrap">
+
+    <h1>Slide in on Scroll</h1>
+
+    <p>In painting, you have unlimited power. You have the ability to move mountains. You can bend rivers. But when I get home, the only thing I have power over is the garbage. Son of a gun. If what you're doing doesn't make you happy - you're doing the wrong thing. Happy painting.</p>
+
+    <p>The very fact that you're aware of suffering is enough reason to be overjoyed that you're alive and can experience it. You don't have to be crazy to do this but it does help. Clouds are free they come and go as they please. Don't be afraid to make these big decisions. Once you start, they sort of just make themselves. You can do anything your heart can imagine. You can create anything that makes you happy.</p>
+
+    <p>Steve wants reflections, so let's give him reflections. Tree trunks grow however makes them happy. It's a super day, so why not make a beautiful sky? It just happens - whether or not you worried about it or tried to plan it.</p>
+
+    <p>Let's have a happy little tree in here. The man who does the best job is the one who is happy at his job. And I know you're saying, 'Oh Bob, you've done it this time.' And you may be right.</p>
+
+    <p>You are only limited by your imagination. See there, told you that would be easy. Don't hurry. Take your time and enjoy. You have to allow the paint to break to make it beautiful. Isn't that fantastic? You can just push a little tree out of your brush like that.</p>
+
+    <p>Van Dyke Brown is a very nice brown, it's almost like a chocolate brown. If it's not what you want - stop and change it. Don't just keep going and expect it will get better. Anyone can paint.</p>
+
+    <p>Maybe there's a happy little waterfall happening over here. We'll have a super time. With something so strong, a little bit can go a long way.</p>
+
+    <img src="https://source.unsplash.com/3bCLqdZMyCA/400x400" class="align-left slide-in">
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates, deserunt facilis et iste corrupti omnis tenetur est. Iste ut est dicta dolor itaque adipisci, dolorum minima, veritatis earum provident error molestias. Ratione magni illo sint vel velit ut excepturi consectetur suscipit, earum modi accusamus voluptatem nostrum, praesentium numquam, reiciendis voluptas sit id quisquam. Consequatur in quis reprehenderit modi perspiciatis necessitatibus saepe, quidem, suscipit iure natus dignissimos ipsam, eligendi deleniti accusantium, rerum quibusdam fugit perferendis et optio recusandae sed ratione. Culpa, dolorum reprehenderit harum ab voluptas fuga, nisi eligendi natus maiores illum quas quos et aperiam aut doloremque optio maxime fugiat doloribus. Eum dolorum expedita quam, nesciunt</p>
+
+    <img src="https://source.unsplash.com/sON7WVPDnFk/400x400" class="align-right slide-in">
+
+    <p>All kinds of happy little splashes. If these lines aren't straight, your water's going to run right out of your painting and get your floor wet. I guess that would be considered a UFO. A big cotton ball in the sky. Everyone needs a friend. Friends are the most valuable things in the world. A fan brush is a fantastic piece of equipment. Use it. Make friends with it. Use what you see, don't plan it. Let's have a little bit of fun today. No pressure. Just relax and watch it happen. If what you're doing doesn't make you happy - you're doing the wrong thing. Happy painting, God bless. Maybe we got a few little happy bushes here, just covered with snow. I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff. They say everything looks better with odd numbers of things. But sometimes I put even numbers—just to upset the critics. You got your heavy coat out yet? It's getting colder. Just let your mind wander and enjoy. This should make you happy.</p>
+
+    <img src="https://source.unsplash.com/1-GAI-O9X9c/200x500" class="align-left slide-in">
+
+    <p>If you don't like it - change it. It's your world. Even trees need a friend. We all need friends. When you do it your way you can go anywhere you choose. You don't want to kill all your dark areas they are very important. In your imagination you can go anywhere you want. Everyone wants to enjoy the good parts - but you have to build the framework first. This is your creation - and it's just as unique and special as you are. Follow the lay of the land. It's most important. You have freedom here. The only guide is your heart. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so.</p>
+
+    <p>Let's give him a friend too. Everybody needs a friend. Be brave. You can do it. What the devil. Just make little strokes like that. Pretend you're water. Just floating without any effort. Having a good day. Of course he's a happy little stone, cause we don't have any other kind. There we go. It's amazing what you can do with a little love in your heart. Now we don't want him to get lonely, so we'll give him a little friend.</p>
+
+    <img src="https://source.unsplash.com/qcfLu3jniuc/400x400" class="align-right slide-in">
+  
+    <p>This present moment is perfect simply due to the fact you're experiencing it. Talent is a pursued interest. That is to say, anything you practice you can do. Isn't it fantastic that you can change your mind and create all these happy things? Everyone is going to see things differently - and that's the way it should be. You can work and carry-on and put lots of little happy things in here. Get away from those little Christmas tree things we used to make in school. Little trees and bushes grow however makes them happy.</p>
+
+    <p>Even the worst thing we can do here is good. Let's put some highlights on these little trees. The sun wouldn't forget them. The light is your friend. Preserve it. The shadows are just like the highlights, but we're going in the opposite direction. Be so very light. Be a gentle whisper. I'm going to mix up a little color. We’ll use Van Dyke Brown, Permanent Red, and a little bit of Prussian Blue. Let's make some happy little clouds in our world. Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things</p>
+
+  </div>
+
+  <script>
+    function debounce(func, wait = 20, immediate = true) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+    const sliderImages = document.querySelectorAll('.slide-in');
+    function checkSlide() {
+      sliderImages.forEach(sliderImage => {
+        // half way through the image
+        const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
+        // bottom of the image
+        const imageBottom = sliderImage.offsetTop + sliderImage.height;
+        const isHalfShown = slideInAt > sliderImage.offsetTop;
+        const isNotScrolledPast = window.scrollY < imageBottom;
+        if (isHalfShown && isNotScrolledPast) {
+          sliderImage.classList.add('active');
+        } else {
+          sliderImage.classList.remove('active');
+        }
+      });
+    }
+    window.addEventListener('scroll', debounce(checkSlide));
+  </script>
+
+  <style>
+    html {
+      box-sizing: border-box;
+      background :url(https://source.unsplash.com/IRTQxWvA9Fw/1500x1500) no-repeat center center fixed;
+      background-size: cover;
+      font-family:'helvetica neue';
+      font-size: 18px;
+      font-weight: 200;
+    }
+    body {
+      margin: 0;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    h1 {
+      margin-top: 0;
+      font-family: 'Fredericka the Great', cursive;
+    }
+    .site-wrap {
+      max-width: 700px;
+      margin: 100px auto;
+      background:white;
+      padding:40px;
+      text-align: justify;
+    }
+    .align-left {
+      float:left;
+      margin-right:20px;
+    }
+    .align-right {
+      float:right;
+      margin-left:20px;
+    }
+    .slide-in {
+      opacity:0;
+      transition:all .5s;
+    }
+    .align-left.slide-in {
+      transform:translateX(-30%) scale(0.95);
+    }
+    .align-right.slide-in {
+      transform:translateX(30%) scale(0.95);
+    }
+    .slide-in.active {
+      opacity:1;
+      transform:translateX(0%) scale(1);
+    }
+  </style>
+
+</body>
+</html>
